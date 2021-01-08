@@ -49,21 +49,23 @@ calc(20, 10, 'mul'); // 200
 */
 
 function calc(numA, numB, operation) {
-  let numA = +prompt("Enter the first number");
-  let numB = +prompt("Enter the second number");
-  let operation = +prompt("Enter an operation");
-  if (operation === 'add') {
-    return numA + numB;
-    } else if (operation === 'sub') {
-    return numA - numB;
-    } else if (operation === 'mul') {
-      return numA * numB;
-    } else if (operation === 'div') {
-      return numA / numB;
-    } else if (typeof numA !== 'number' || typeof numB !== 'number') {
-      return "Enter valid input";
+  if (typeof firstNum !== 'number' && typeof secondNum !== 'number') {
+    alert ("Enter valid input");
+  } else {
+    switch(operation) {
+      case 'add':
+        return numA + numB;
+      case 'sub':
+        return numA - numB;
+      case 'mul':
+        return numA * numB;
+      case 'div':
+        return numA / numB;
+      default:
+        alert "Enter a valid operation";
     }
   }
+}
 
 /*
 5. Create a function named `isLeapYear` that accepts a number data type and return `true` or `false` based
@@ -74,7 +76,6 @@ isLeapYear(2001); // false
 */
 
 function isLeapYear(year) {
-  let year = +prompt("Enter a year");
   if (year % 4 === 0 && year % 100 === 0 && year % 400 === 0) {
     return 'true';
   } else {
@@ -82,15 +83,20 @@ function isLeapYear(year) {
   }
 }
 
+function isLeapYear(year) {
+  if (year % 4 === 0) return true;
+  if (year % 100 === 0) return false;
+  return year % 4 === 0;
+}
+
 /*
 6. Create a function named `getFactorial` that accepts a number and return the factorial of the number.
 */
 
-function getFactorial() {
-  let n = +prompt("Enter a number");
-  let factorial = 0;
-  for(let i = 0; i <=n; i--) {
-    factorial *= i;
+function getFactorial(num) {
+  let final = 1;
+  for(let i = num; i >= 1; i--) {
+    final *= i;
   }
-  return (`The factorial of ${n} is ${factorial}`);
+  return final;
 }
